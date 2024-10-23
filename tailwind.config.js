@@ -4,5 +4,11 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  exports: {
+    daisyui: {
+      themes: ["night"],
+    },
+  },
+  plugins: [require("daisyui")],
 };
+
