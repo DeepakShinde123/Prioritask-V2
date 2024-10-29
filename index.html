@@ -38,25 +38,18 @@
         <div class="card-body">
           <h2 class="card-title">Prioritask - Organize yourself</h2>
           <form data-form>
-          <input
-            type="text"
-            placeholder="Add task"
-            class="input input-bordered w-full max-w-xs"
-            data-user-input
-          />
-        </form>
-          <div class="form-control flex flex-col gap-3">
-            <label class="label cursor-pointer">
-              <span class="label-text">Remember me</span>
-              <input type="checkbox" checked="checked" class="checkbox" />
-            </label>
-          </div>
-          <div class="form-control">
-            <label class="label cursor-pointer">
-              <span class="label-text">Remember me</span>
-              <input type="checkbox" checked="checked" class="checkbox" />
-            </label>
-          </div>
+            <input
+              type="text"
+              placeholder="Add task"
+              class="input input-bordered w-full max-w-xs"
+              data-user-input
+            />
+          </form>
+          <div
+            class="form-control flex flex-col gap-3"
+            data-task-container
+          ></div>
+          <div class="form-control"></div>
           <div class="card-actions justify-end"></div>
         </div>
       </div>
