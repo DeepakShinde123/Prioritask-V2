@@ -6,12 +6,21 @@ const formEl = document.querySelector("[data-form]");
 const inputEl = document.querySelector("[data-user-input]");
 const taskContainerEl = document.querySelector("[data-task-container]");
 
-const tasks = [];
+let state = [];
+
+function toggleCompleted(id) {
+  const output = state.map((task) => {
+    if (id === id) {
+      return { ...task, isCompleted: !task.isCompleted };
+    }
+    return task;
+  });
+}
 
 function renderTask() {
   taskContainerEl.innerHTML = "";
   const frag = document.createDocumentFragment();
-  tasks.forEach((task) => {
+  state.forEach((task) => {
     frag.appendChild(SingleTask(task.task, task.isCompleted, task.id));
   });
   taskContainerEl.appendChild(frag);
@@ -24,10 +33,10 @@ formEl.addEventListener("submit", (e) => {
   const newTask = {
     task: titleCase(inputEl.value),
     isCompleted: true,
-    id: tasks.length,
+    id: state.length,
   };
 
-  tasks.unshift(newTask);
+  state.unshift(newTask);
 
   renderTask();
 
@@ -35,5 +44,5 @@ formEl.addEventListener("submit", (e) => {
 });
 
 taskContainerEl.addEventListener("click", (e) => {
-  console.log(e.target.id);
+  toggleCompleted(+e.target.id);
 });
