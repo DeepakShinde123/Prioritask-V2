@@ -1,6 +1,6 @@
 import "./index.css";
 import SingleTask from "./Components/SingleTask";
-import { titleCase } from "./utils";
+import { titleCase, randomId } from "./utils";
 
 const formEl = document.querySelector("[data-form]");
 const inputEl = document.querySelector("[data-user-input]");
@@ -9,7 +9,7 @@ const taskContainerEl = document.querySelector("[data-task-container]");
 let state = [];
 
 function toggleCompleted(id) {
-  const output = state.map((task) => {
+  state = state.map((task) => {
     if (id === id) {
       return { ...task, isCompleted: !task.isCompleted };
     }
@@ -32,8 +32,8 @@ formEl.addEventListener("submit", (e) => {
 
   const newTask = {
     task: titleCase(inputEl.value),
-    isCompleted: true,
-    id: state.length,
+    isCompleted: false,
+    id: randomId(),
   };
 
   state.unshift(newTask);
@@ -44,5 +44,6 @@ formEl.addEventListener("submit", (e) => {
 });
 
 taskContainerEl.addEventListener("click", (e) => {
-  toggleCompleted(+e.target.id);
+  toggleCompleted(e.target.id);
+  state.sort((a, b) => a.isCompleted - b.isCompleted);
 });
